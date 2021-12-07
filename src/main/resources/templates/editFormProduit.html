@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.6.0/css/bootstrap.min.css"/>
+<script type="text/javascript" src="webjars/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+<head>
+<meta charset="ISO-8859-1">
+<title>Modification du Produit</title>
+</head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+	<div class="container mt-5" >
+	<center><h1 style="text-transform: uppercase;text-shadow: 2px 2px 1px blue;" class="mb-10 mt-3">*** Modification du produit ***</h1></center>
+	   <div class="card">
+     			<div class="card-header">
+     				Modification du Produit
+     			</div>
+			 	<div class="card-body">
+					<form th:action="@{editProduit}" method="post">
+						<div class="form-group">
+						    <label class="control-label">ID du Produit:</label>
+							<input type="number" name="id" id="id" class="form-control" readonly th:value="${produit.id}">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Nom du Produit:</label>
+							<input type="text" name="nomProduit" id="nomProduit" class="form-control" th:value="${produit.nomProduit}">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Prix du Produit:</label>
+							<input type="text" name="prix" id="prix" class="form-control" th:value="${produit.prix}">
+						</div>
+						<!-- <fmt:formatDate pattern="yyyy-MM-dd" th:value="${produit.dateCreated}" th:var="formaDate"/> -->
+						<div class="form-group">
+							<label class="control-label">Date de Creation:</label>
+							<input type="date" name="date" id="date" class="form-control" th:value="${produit.dateCreated}">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Quantite du Produit:</label>
+							<input type="text" name="quantite" id="quantite" class="form-control" th:value="${produit.quantite }">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Produit en Promo:</label>
+							<input type="text" name="isPromo" id="isPromo" class="form-control" th:value="${produit.isPromo }">
+						</div>
+						<div>
+							<input type="submit" class="btn btn-primary col-12" value="Modifierr">
+						</div>
+					</form>
+			    </div>
+			</div>
+	</div>
+</div>	
+</body>
+</html>

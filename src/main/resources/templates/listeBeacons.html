@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" layout:decorator="template" >
+<head>
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.6.0/css/bootstrap.min.css"/>
+<script type="text/javascript" src="webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+<meta charset="utf-8">
+<title>Liste des Produits</title>
+</head>
+<body>
+<div layout:fragment="myContent">
+	<div class="container mt-5">
+     		<center><h1 style="text-transform: uppercase;text-shadow: 2px 2px 1px blue;" class="mb-10 mt-3">*** Liste des Beacons ***</h1></center>
+     		<div class="card">
+     			<div class="card-header">
+     				Liste des Beacons
+     			</div>
+     			<div class="card-body">
+     				<table class="table table-striped">
+	     					<tr>
+				     			<th>UUID</th>
+				     			<th>MAJOR</th>
+				     			<th>MINOR</th>
+				     			<th>Edit</th>
+				     			<th>Delete</th>
+	     					</tr>
+     					
+				     		<tr th:each="bc:${beacons}">
+				     			<td th:text="${bc.uuid}"></td>
+				     			<td th:text="${bc.major}"></td>
+				     			<td th:text="${bc.minor}"></td>
+				     			<td><a th:href="@{editFormBeacon(uuid=${bc.uuid})}"><button type="button" class="btn btn-info">Modifier</button></a></td>
+				     			<td><a onclick="return confirm('Etes-vous sure de vouloir supprimer ce Beacon?')" th:href="@{deleteBeacon(uuid=${bc.uuid})}"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
+				     		</tr>
+     		            
+     				</table>
+     					
+     			</div>
+     		</div>
+     </div>
+</div>
+</body>
+</html>
